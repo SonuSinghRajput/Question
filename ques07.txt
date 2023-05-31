@@ -1,0 +1,40 @@
+Q)show how one servlet calls another servlet using RequestDispatcher object
+
+-----FirstServlet.java----
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class FirstServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Perform some logic or processing
+        
+        // Get the RequestDispatcher object for the second servlet
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/secondServlet");
+        
+        // Forward the request and response objects to the second servlet
+        dispatcher.forward(request, response);
+    }
+}
+
+
+
+-----SecondServlet.java----
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class SecondServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Perform some logic or processing
+        
+        // Output a response
+        response.getWriter().println("This is the second servlet.");
+    }
+}

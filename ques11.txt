@@ -1,0 +1,32 @@
+Q)write a jsp program to calculates factorial values for an integer number, while the input is taken from an html form
+
+-----factorial.jsp----
+
+<%@ page language="java" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Factorial Calculator</title>
+</head>
+<body>
+    <h1>Factorial Calculator</h1>
+    <form method="post" action="factorial.jsp">
+        Enter a number: <input type="number" name="number" required><br>
+        <input type="submit" value="Calculate Factorial">
+    </form>
+    
+    <%
+        if (request.getMethod().equals("POST")) {
+            // Retrieve the number from the form
+            int number = Integer.parseInt(request.getParameter("number"));
+            
+            // Calculate the factorial
+            int factorial = 1;
+            for (int i = 2; i <= number; i++) {
+                factorial *= i;
+            }
+    %>
+    <h2>Factorial of <%= number %> is <%= factorial %></h2>
+    <% } %>
+</body>
+</html>

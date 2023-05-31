@@ -1,0 +1,97 @@
+Q)create a regestration web pages using html form object containing  the below mentioned field  and apply external stylesheet on that page
+ a)First Name (using text boxes) b)Last Name (using text boxes) c)Email-id (using text boxes) d)Gender(Using radio button) e)Hobbies (using check boxes) f)submit and reset button
+
+---html file---
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Registration Form</h1>
+    
+    <form>
+        <div class="form-group">
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email ID:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Gender:</label>
+            <label for="male">
+                <input type="radio" id="male" name="gender" value="male" required> Male
+            </label>
+            <label for="female">
+                <input type="radio" id="female" name="gender" value="female" required> Female
+            </label>
+        </div>
+        
+        <div class="form-group">
+            <label>Hobbies:</label>
+            <label for="hobby1">
+                <input type="checkbox" id="hobby1" name="hobbies" value="reading"> Reading
+            </label>
+            <label for="hobby2">
+                <input type="checkbox" id="hobby2" name="hobbies" value="traveling"> Traveling
+            </label>
+            <label for="hobby3">
+                <input type="checkbox" id="hobby3" name="hobbies" value="cooking"> Cooking
+            </label>
+        </div>
+        
+        <div class="button-group">
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </div>
+    </form>
+</body>
+</html>
+
+---css file--
+
+/* External Stylesheet */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 200px;
+    padding: 5px;
+}
+
+.input-radio label,
+.input-checkbox label {
+    margin-right: 10px;
+}
+
+.button-group input {
+    margin-right: 10px;
+}

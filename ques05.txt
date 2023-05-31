@@ -1,0 +1,23 @@
+Q)write a javascript program to check a character given by user is vowels or consonent
+function checkVowel(character) {
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+
+  if (vowels.includes(character.toLowerCase())) {
+    return true;
+  }
+
+  return false;
+}
+
+const userInput = prompt("Enter a character:");
+const character = userInput.toLowerCase();
+
+if (character.length !== 1) {
+  console.log("Invalid input. Please enter a single character.");
+} else {
+  if (checkVowel(character)) {
+    console.log(character + " is a vowel.");
+  } else {
+    console.log(character + " is a consonant.");
+  }
+}

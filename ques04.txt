@@ -1,0 +1,27 @@
+Q)write a javascript program to check a number given by user is prime or not
+function checkPrime(number) {
+  if (number <= 1) {
+    return false;
+  }
+
+  for (let i = 2; i <= Math.sqrt(number); i++) {
+    if (number % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+const userInput = prompt("Enter a number:");
+const number = parseInt(userInput);
+
+if (isNaN(number)) {
+  console.log("Invalid input. Please enter a valid number.");
+} else {
+  if (checkPrime(number)) {
+    console.log(number + " is a prime number.");
+  } else {
+    console.log(number + " is not a prime number.");
+  }
+}

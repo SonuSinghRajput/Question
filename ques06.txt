@@ -1,0 +1,15 @@
+Q)write a javascript program to validate an email field
+
+function validateEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+const userInput = prompt("Enter an email address:");
+const email = userInput.trim();
+
+if (validateEmail(email)) {
+  console.log(email + " is a valid email address.");
+} else {
+  console.log(email + " is not a valid email address.");
+}

@@ -1,0 +1,66 @@
+Q)Develop a dynamic web application using servlet to create and display cookies
+
+-----CreateCookieServlet.java ------
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class CreateCookieServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Create a new cookie
+        Cookie cookie = new Cookie("username", "JohnDoe");
+        
+        // Set the maximum age of the cookie (in seconds)
+        cookie.setMaxAge(3600); // Cookie will last for 1 hour
+        
+        // Add the cookie to the response
+        response.addCookie(cookie);
+        
+        // Generate a response
+        response.setContentType("text/html");
+        response.getWriter().println("<html><body>");
+        response.getWriter().println("<h1>Cookie Created</h1>");
+        response.getWriter().println("<p>A cookie has been created with the name 'username' and value 'JohnDoe'.</p>");
+        response.getWriter().println("</body></html>");
+    }
+}
+
+
+
+---------DisplayCookieServlet.java-----
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class DisplayCookieServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Get all cookies from the request
+        Cookie[] cookies = request.getCookies();
+        
+        // Generate a response
+        response.setContentType("text/html");
+        response.getWriter().println("<html><body>");
+        response.getWriter().println("<h1>Displaying Cookies</h1>");
+        
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                String name = cookie.getName();
+                String value = cookie.getValue();
+                
+                response.getWriter().println("<p>Cookie Name: " + name + ", Value: " + value + "</p>");
+            }
+        } else {
+            response.getWriter().println("<p>No cookies found.</p>");
+        }
+        
+        response.getWriter().println("</body></html>");
+    }
+}
+

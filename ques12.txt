@@ -1,0 +1,39 @@
+Q)write a jsp program to show the Fibonacci series up to a particular term. while the input is taken from html form
+
+---fibonacci.jsp---
+
+<%@ page language="java" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fibonacci Series Calculator</title>
+</head>
+<body>
+    <h1>Fibonacci Series Calculator</h1>
+    <form method="post" action="fibonacci.jsp">
+        Enter the number of terms: <input type="number" name="terms" required><br>
+        <input type="submit" value="Generate Fibonacci Series">
+    </form>
+    
+    <%
+        if (request.getMethod().equals("POST")) {
+            // Retrieve the number of terms from the form
+            int terms = Integer.parseInt(request.getParameter("terms"));
+            
+            // Calculate the Fibonacci series
+            int firstTerm = 0;
+            int secondTerm = 1;
+            
+            // Display the first two terms
+            out.println("Fibonacci Series up to " + terms + " terms: " + firstTerm + " " + secondTerm);
+            
+            for (int i = 2; i < terms; i++) {
+                int nextTerm = firstTerm + secondTerm;
+                out.print(" " + nextTerm);
+                firstTerm = secondTerm;
+                secondTerm = nextTerm;
+            }
+        }
+    %>
+</body>
+</html>

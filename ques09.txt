@@ -1,0 +1,40 @@
+Q)write a program that creates a servlet to perform session tracking using HTTP Session object
+
+----- SessionTrackingServlet.java--------
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class SessionTrackingServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Get the current session or create a new session if it doesn't exist
+        HttpSession session = request.getSession();
+        
+        // Check if the session is new
+        boolean isNewSession = session.isNew();
+        
+        // Get the session ID
+        String sessionId = session.getId();
+        
+        // Set some session attributes
+        session.setAttribute("username", "John");
+        session.setAttribute("email", "john@example.com");
+        
+        // Invalidate the session after 5 minutes of inactivity
+        session.setMaxInactiveInterval(300);
+        
+        // Generate a response
+        response.setContentType("text/html");
+        response.getWriter().println("<html><body>");
+        response.getWriter().println("<h1>Session Tracking Example</h1>");
+        response.getWriter().println("<p>Session ID: " + sessionId + "</p>");
+        response.getWriter().println("<p>New Session: " + isNewSession + "</p>");
+        response.getWriter().println("<p>Username: " + session.getAttribute("username") + "</p>");
+        response.getWriter().println("<p>Email: " + session.getAttribute("email") + "</p>");
+        response.getWriter().println("</body></html>");
+    }
+}

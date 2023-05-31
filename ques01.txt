@@ -1,0 +1,43 @@
+(Q) Create an html webpage that displays name of search engines in order list format and name of web browsers in unordered list format and apply inline stylesheet on that page.Q
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Inline Stylesheet */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        ul {
+            list-style-type: disc;
+            color: #666;
+        }
+        
+        ol {
+            list-style-type: decimal;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Engines</h1>
+    <ol>
+        <li>Google</li>
+        <li>Bing</li>
+        <li>Yahoo</li>
+    </ol>
+    
+    <h1>Web Browsers</h1>
+    <ul>
+        <li>Chrome</li>
+        <li>Firefox</li>
+        <li>Safari</li>
+    </ul>
+</body>
+</html>
